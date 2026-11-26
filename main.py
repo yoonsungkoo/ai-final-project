@@ -36,7 +36,7 @@ def 정제(행들, 설정):
             continue
 
         try:
-            값 = int(원값)
+             값 = int(원값.replace(",", ""))
         except ValueError:
             버림["숫자가 아님"] += 1
             continue
