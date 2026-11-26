@@ -16,12 +16,9 @@ import config
 def 읽기(경로):
     """CSV 파일을 읽어 사전 목록으로 돌려준다."""
     행들 = []
-    try:
-        with open(경로, encoding="utf-8") as f:
-            for 행 in csv.DictReader(f):
-                행들.append(행)
-    except:
-        return []
+    with open(경로, encoding="utf-8") as f:
+        for 행 in csv.DictReader(f):
+            행들.append(행)
     return 행들
 
 
@@ -44,7 +41,7 @@ def 정제(행들, 설정):
             버림["숫자가 아님"] += 1
             continue
 
-        if 값 < 0 or 값 >= 설정["최댓값"]:
+        if 값 < 0 or 값 > 설정["최댓값"]:
             버림["범위 밖"] += 1
             continue
 
